@@ -1,6 +1,8 @@
 class BestGames::CLI
 
   def call
+    puts "These are the top upcoming games:"
+    puts "---------------------------------"
     # list_games
     # menu
     BestGames::Scraper.scrape

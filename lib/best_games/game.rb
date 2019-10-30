@@ -1,8 +1,8 @@
 class BestGames::Game
-  attr_accessor :title, :rating, :release_date, :summary, :list_of_awards, :genre, :platform
+  attr_accessor :title, :release_date, :summary, :genre, :platform, :url
 
   def self.games
-    puts "These are the highest rated games of all time:"
+
     puts "1. The Legend of Zelda: Ocarina of Time"
     puts "2. Tony Hawk's Pro Skater 2 "
     puts "3. Grand Theft Auto IV"
