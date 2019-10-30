@@ -15,11 +15,10 @@ class BestGames::Scraper
     doc2 =  Nokogiri::HTML(open("https://www.gamespot.com/"))
     release_date = doc.search("dd.pod-objectStats-info__release li span").text.strip.gsub(/unreleased/, "")
     summary = doc.search("dd.pod-objectStats-info__deck").text.strip
-    platform = doc.search("dd.pod-objectStats-info__systems ul.system-list li").text.strip
+    platform = doc.search("dd.pod-objectStats-info__systems ul.system-list li")
     url = @url
     title = @title
     BestGames::Game.new(title, release_date, summary, platform, url)
-    binding.pry
   end
 
 end
