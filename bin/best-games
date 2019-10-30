@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
 require './lib/best_games'
-BestGames::Scraper.new.call
+BestGames::CLI.new.call
