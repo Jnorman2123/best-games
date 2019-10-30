@@ -1,12 +1,14 @@
 class BestGames::CLI
 
   def call
-    puts "These are the top upcoming games:"
-    puts "---------------------------------"
-    list_games
-    BestGames::Game.games
-    menu
+    # puts "These are the top upcoming games:"
+    # puts "---------------------------------"
+    # list_games
+    # BestGames::Game.games
+    # menu
     # BestGames::Scraper.game_attributes
+    BestGames::Scraper.practice
+
   end
 
   def list_games
@@ -20,6 +22,8 @@ class BestGames::CLI
       input = gets.strip.downcase
       if input >= "1" || input <= "10"
         BestGames::Game.call_attributes(input.to_i - 1)
+      elsif input == "list"
+        list_games
       end
     end
   end

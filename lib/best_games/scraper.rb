@@ -21,4 +21,10 @@ class BestGames::Scraper
     BestGames::Game.new(title, release_date, summary, platform, url)
   end
 
+  def self.practice
+    doc = Nokogiri::HTML(open("https://www.gamespot.com/gamespot-50/"))
+    link = doc.search("li.media figure a").attribute("href").value
+    puts "https://www.gamespot.com/#{link}"
+  end
+
 end
