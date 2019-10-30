@@ -1,8 +1,9 @@
 class BestGames::CLI
 
   def call
-    list_games
-    menu
+    # list_games
+    # menu
+    BestGames::Scraper.scrape
   end
 
   def list_games
