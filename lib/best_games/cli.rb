@@ -5,7 +5,8 @@ class BestGames::CLI
     puts "---------------------------------"
     # list_games
     # menu
-    BestGames::Scraper.scrape
+    # BestGames::Scraper.game_titles
+    BestGames::Scraper.game_attributes
   end
 
   def list_games
