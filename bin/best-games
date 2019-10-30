@@ -1,3 +1,4 @@
 #!/usr/bin/env ruby
 
-puts "hello world"
+require './lib/best_games'
+BestGames::Scraper.new.call
