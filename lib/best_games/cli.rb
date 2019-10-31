@@ -17,9 +17,9 @@ class BestGames::CLI
     # BestGames::Scraper.scrape_release_date
     # BestGames::Scraper.scrape_summary
     # BestGames::Scraper.scrape_platform
-    BestGames::Scraper.scrape_publisher
+    # BestGames::Scraper.scrape_publisher
     # BestGames::Scraper.scrape_developer
-    # BestGames::Scraper.scrape_genre
+    BestGames::Scraper.scrape_genre
   end
 
   def menu

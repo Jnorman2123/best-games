@@ -56,29 +56,51 @@ class BestGames::Scraper
   def self.scrape_developer
     self.urls.each do |page|
       developers = []
+      properties = []
       doc = Nokogiri::HTML(open(page))
-      developer = doc.search("dl.pod-objectStats-additional dd a")
-      developer.each do |company|
-        text = company.text
-        # .gsub(/\D \d more/, "")
-        developers << text
+      property = doc.search("dl.pod-objectStats-additional dt")
+      property.each do |stat|
+        properties << stat.text
       end
+      company = doc.search("dl.pod-objectStats-additional dd")
+      company.each do |developer|
+        developers << developer.text
+      end
+      puts "#{properties[0]} #{developers[0]}"
     end
   end
 
   def self.scrape_publisher
     self.urls.each do |page|
       publishers = []
+      properties = []
       doc = Nokogiri::HTML(open(page))
-      publisher = doc.search("dl.pod-objectStats-additional dd a")
-      publisher.each do |company|
-        text = company.text
-        # .gsub(/\D \d more/, "")
-        publishers << text
+      property = doc.search("dl.pod-objectStats-additional dt")
+      property.each do |stat|
+        properties << stat.text
       end
-
-      puts "#{publishers.join(", ")}"
+      company = doc.search("dl.pod-objectStats-additional dd")
+      company.each do |publisher|
+        publishers << publisher.text
+      end
+      puts "#{properties[1]} #{publishers[1]}"
     end
   end
 
+  def self.scrape_genre
+    self.urls.each do |page|
+      genres = []
+      properties = []
+      doc = Nokogiri::HTML(open(page))
+      property = doc.search("dl.pod-objectStats-additional dt")
+      property.each do |stat|
+        properties << stat.text
+      end
+      company = doc.search("dl.pod-objectStats-additional dd")
+      company.each do |genre|
+        genres << genre.text
+      end
+      puts "#{properties[2]} #{genres[2]}"
+    end
+  end
 end
