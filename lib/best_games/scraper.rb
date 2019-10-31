@@ -1,5 +1,4 @@
 class BestGames::Scraper
-  # attr_accessor :url, :title, :doc
   @@urls = []
 
   def self.doc
@@ -11,7 +10,6 @@ class BestGames::Scraper
       next if index == 2
       url_suffix = game.search("figure a").attribute("href")
       url = "https://www.gamespot.com#{url_suffix}"
-      # puts "#{url}"
       @@urls << url
     end
   end
@@ -53,54 +51,20 @@ class BestGames::Scraper
     end
   end
 
-  def self.scrape_developer
+  def self.scrape_additional_properties(index)
     self.urls.each do |page|
-      developers = []
       properties = []
+      # property_headers = []
       doc = Nokogiri::HTML(open(page))
-      property = doc.search("dl.pod-objectStats-additional dt")
-      property.each do |stat|
-        properties << stat.text
-      end
+      # property_header = doc.search("dl.pod-objectStats-additional dt")
+      # property_header.each do |stat|
+      #   property_headers << stat.text
+      # end
       company = doc.search("dl.pod-objectStats-additional dd")
-      company.each do |developer|
-        developers << developer.text
+      company.each do |property|
+        properties << property.text
       end
-      puts "#{properties[0]} #{developers[0]}"
-    end
-  end
-
-  def self.scrape_publisher
-    self.urls.each do |page|
-      publishers = []
-      properties = []
-      doc = Nokogiri::HTML(open(page))
-      property = doc.search("dl.pod-objectStats-additional dt")
-      property.each do |stat|
-        properties << stat.text
-      end
-      company = doc.search("dl.pod-objectStats-additional dd")
-      company.each do |publisher|
-        publishers << publisher.text
-      end
-      puts "#{properties[1]} #{publishers[1]}"
-    end
-  end
-
-  def self.scrape_genre
-    self.urls.each do |page|
-      genres = []
-      properties = []
-      doc = Nokogiri::HTML(open(page))
-      property = doc.search("dl.pod-objectStats-additional dt")
-      property.each do |stat|
-        properties << stat.text
-      end
-      company = doc.search("dl.pod-objectStats-additional dd")
-      company.each do |genre|
-        genres << genre.text
-      end
-      puts "#{properties[2]} #{genres[2]}"
+      puts "#{properties[index]}"
     end
   end
 end
