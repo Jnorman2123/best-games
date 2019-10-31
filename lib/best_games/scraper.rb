@@ -14,6 +14,13 @@ class BestGames::Scraper
     end
   end
 
+  def self.scrape_rank
+    self.doc.search("li.media").each.with_index(1) do |game, index|
+      next if index == 2
+      rank = game.search("figure a span span.gs50-item__rank__value").text.strip
+    end
+  end
+
   def self.urls
     @@urls
   end

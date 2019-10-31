@@ -13,11 +13,14 @@ class BestGames::CLI
 
   def list_games
     BestGames::Scraper.scrape_url
+    BestGames::Game.create
+    BestGames::Game.games
     # BestGames::Scraper.scrape_title
     # BestGames::Scraper.scrape_release_date
     # BestGames::Scraper.scrape_summary
     # BestGames::Scraper.scrape_platform
-    BestGames::Scraper.scrape_additional_properties(0)
+    # BestGames::Scraper.scrape_additional_properties(0)
+    # BestGames::Scraper.scrape_rank
   end
 
   def menu

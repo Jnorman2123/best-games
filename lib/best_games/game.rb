@@ -1,27 +1,21 @@
 class BestGames::Game
-  attr_accessor :title, :release_date, :summary, :platform, :url, :developer, :publisher, :genre
+  attr_accessor :title, :release_date, :summary, :platform, :url, :developer, :publisher, :genre, :rank
   @@all = []
 
-  def initialize(title, release_date, summary, platform, url)
+  def initialize(title, rank, url)
     @title = title
-    @release_date = release_date
-    @summary = summary
-    @platform = platform
+    @rank = rank
     @url = url
     @@all << self
   end
 
   def self.games
     @@all
+    binding.pry
   end
 
-  def self.call_attributes(index)
-    puts  "#{@@all[index].title}"
-    puts  "#{@@all[index].release_date}"
-    @@all[index].platform.each do |system|
-      puts "#{system.text}"
-    end
-    puts  "#{@@all[index].summary}"
-    puts  "#{@@all[index].url}"
+  def self.create
+    self.new(BestGames::Scraper.scrape_title, BestGames::Scraper.scrape_rank, BestGames::Scraper.scrape_url)
   end
+
 end
