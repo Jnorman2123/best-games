@@ -1,5 +1,5 @@
 class BestGames::Game
-  attr_accessor :title, :release_date, :summary, :platform, :url
+  attr_accessor :title, :release_date, :summary, :platform, :url, :developer, :publisher, :genre
   @@all = []
 
   def initialize(title, release_date, summary, platform, url)
