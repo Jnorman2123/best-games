@@ -29,14 +29,25 @@ class BestGames::Game
       text = console.text.gsub(/\D \d more/, "")
       platforms << text
     end
+    platforms
   end
 
   def developer
-    @developer = doc.search("dd li span").text.gsub(/unreleased|released|\D \d more/, "")
+    developers = []
+    @developer = doc.search("dl.pod-objectStats-additional dd")
+    @developer.each do |property|
+      developers << property.text
+    end
+    puts "#{developers[0]}"
   end
 
   def publisher
-    @publisher = doc.search("dd li span").text.gsub(/unreleased|released|\D \d more/, "")
+    publishers = []
+    @publisher = doc.search("dl.pod-objectStats-additional dd")
+    company.each do |publ|
+      properties << property.text
+    end
+    puts "#{properties[index]}"
   end
 
   def genre
