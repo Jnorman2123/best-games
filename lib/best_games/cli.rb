@@ -7,7 +7,7 @@ class BestGames::CLI
   end
 
   def list_games
-    puts "These are the top upcoming games:"
+    puts "These are the top 50 most anticipated upcoming games:"
     puts "---------------------------------"
     BestGames::Game.games.each do |game|
       puts "#{game.rank}. #{game.title}"
