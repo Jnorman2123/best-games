@@ -1,27 +1,16 @@
 class BestGames::CLI
 
   def call
-    # puts "These are the top upcoming games:"
-    # puts "---------------------------------"
     list_games
-    # BestGames::Game.games
-    # menu
-    # BestGames::Scraper.game_attributes
-    # BestGames::Scraper.game_titles
-
   end
 
   def list_games
+    puts "These are the top upcoming games:"
+    puts "---------------------------------"
     BestGames::Scraper.create_game
-    # BestGames::Game.create
-
-    # BestGames::Scraper.scrape_title
-    BestGames::Game.games
-    # BestGames::Scraper.scrape_release_date
-    # BestGames::Scraper.scrape_summary
-    # BestGames::Scraper.scrape_platform
-    # BestGames::Scraper.scrape_additional_properties(0)
-    # BestGames::Scraper.scrape_rank
+    BestGames::Game.games.each do |game|
+      puts "#{game.rank}. #{game.title}"
+    end
   end
 
   def menu

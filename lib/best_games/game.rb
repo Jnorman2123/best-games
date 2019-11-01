@@ -11,7 +11,6 @@ class BestGames::Game
 
   def self.games
     @@all
-    binding.pry
   end
 
   def release_date
