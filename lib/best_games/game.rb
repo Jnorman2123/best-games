@@ -20,16 +20,16 @@ class BestGames::Game
   end
 
   def release_date
-    @release_date = doc.search("dd li span").text.gsub(/unreleased|released|\D \d more/, "")
+    @release_date ||= doc.search("dd li span").text.gsub(/unreleased|released|\D \d more/, "")
   end
 
   def summary
-    @summary = doc.search("dd.pod-objectStats-info__deck").text
+    @summary ||= doc.search("dd.pod-objectStats-info__deck").text
   end
 
   def platform
     platforms = []
-    @platform = doc.search("dd ul li")
+    @platform ||= doc.search("dd ul li")
     @platform.each do |console|
       text = console.text.gsub(/\D \d more/, "")
       platforms << text
@@ -39,7 +39,7 @@ class BestGames::Game
 
   def developer
     developers = []
-    @developer = doc.search("dl.pod-objectStats-additional dd")
+    @developer ||= doc.search("dl.pod-objectStats-additional dd")
     @developer.each do |property|
       developers << property.text
     end
@@ -48,7 +48,7 @@ class BestGames::Game
 
   def publisher
     publishers = []
-    @publisher = doc.search("dl.pod-objectStats-additional dd")
+    @publisher ||= doc.search("dl.pod-objectStats-additional dd")
     @publisher.each do |property|
       publishers << property.text
     end
@@ -57,7 +57,7 @@ class BestGames::Game
 
   def genre
     genres = []
-    @genre = doc.search("dl.pod-objectStats-additional dd")
+    @genre ||= doc.search("dl.pod-objectStats-additional dd")
     @genre.each do |property|
       genres << property.text
     end

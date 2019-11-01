@@ -19,8 +19,17 @@ class BestGames::CLI
     while input != "exit"
       puts "Enter the number that you would like to see more details about, or list to see the list again or exit to leave:"
       input = gets.strip.downcase
-      game = BestGames::Game.find_by_rank(input)
-      game_details(game)
+      if input.to_i > 0 && input.to_i <= 50
+        game = BestGames::Game.find_by_rank(input)
+        game_details(game)
+      elsif input == "list"
+        list_games
+      elsif input == "exit"
+        puts "Goodbye"
+      else
+        puts ""
+        puts "I don't recognize that input."
+      end
     end
   end
 
