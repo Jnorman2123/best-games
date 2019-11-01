@@ -34,5 +34,7 @@ class BestGames::CLI
     puts "#{game.summary}"
     puts "Available on #{game.platform}."
     puts "Developed by #{game.developer}."
+    puts "Published by #{game.publisher}."
+    puts "Genres #{game.genre}"
   end
 end

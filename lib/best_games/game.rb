@@ -43,7 +43,7 @@ class BestGames::Game
     @developer.each do |property|
       developers << property.text
     end
-    developers[0].join(", ")
+    developers[0]
   end
 
   def publisher
@@ -52,7 +52,7 @@ class BestGames::Game
     @publisher.each do |property|
       publishers << property.text
     end
-    publishers[1].join(", ")
+    publishers[1]
   end
 
   def genre
@@ -61,7 +61,7 @@ class BestGames::Game
     @genre.each do |property|
       genres << property.text
     end
-    genres[2].join(", ")
+    genres[2]
   end
 
   def doc
