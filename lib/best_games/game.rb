@@ -38,20 +38,25 @@ class BestGames::Game
     @developer.each do |property|
       developers << property.text
     end
-    puts "#{developers[0]}"
+    developers[0]
   end
 
   def publisher
     publishers = []
     @publisher = doc.search("dl.pod-objectStats-additional dd")
-    company.each do |publ|
-      properties << property.text
+    @publisher.each do |property|
+      publishers << property.text
     end
-    puts "#{properties[index]}"
+    publishers[1]
   end
 
   def genre
-    @genre = doc.search("dd li span").text.gsub(/unreleased|released|\D \d more/, "")
+    genres = []
+    @genre = doc.search("dl.pod-objectStats-additional dd")
+    @genre.each do |property|
+      genres << property.text
+    end
+    genres[2]
   end
 
   def doc
