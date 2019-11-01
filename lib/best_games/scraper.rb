@@ -14,47 +14,4 @@ class BestGames::Scraper
       BestGames::Game.new(rank, title, url)
     end
   end
-
-  def self.scrape_release_date
-    self.urls.each do |page|
-      doc = Nokogiri::HTML(open(page))
-      date = doc.search("dd li span").text.gsub(/unreleased|released|\D \d more/, "")
-    end
-  end
-
-  def self.scrape_summary
-    self.urls.each do |page|
-      doc = Nokogiri::HTML(open(page))
-      summary = doc.search("dd.pod-objectStats-info__deck").text
-    end
-  end
-
-  def self.scrape_platform
-    self.urls.each do |page|
-      platforms = []
-      doc = Nokogiri::HTML(open(page))
-      platform = doc.search("dd ul li")
-      platform.each do |console|
-        text = console.text.gsub(/\D \d more/, "")
-        platforms << text
-      end
-    end
-  end
-
-  def self.scrape_additional_properties(index)
-    self.urls.each do |page|
-      properties = []
-      # property_headers = []
-      doc = Nokogiri::HTML(open(page))
-      # property_header = doc.search("dl.pod-objectStats-additional dt")
-      # property_header.each do |stat|
-      #   property_headers << stat.text
-      # end
-      company = doc.search("dl.pod-objectStats-additional dd")
-      company.each do |property|
-        properties << property.text
-      end
-      puts "#{properties[index]}"
-    end
-  end
 end
