@@ -34,7 +34,7 @@ class BestGames::Game
       text = console.text.gsub(/\D \d more/, "")
       platforms << text
     end
-    platforms
+    platforms.join(", ")
   end
 
   def developer
@@ -43,7 +43,7 @@ class BestGames::Game
     @developer.each do |property|
       developers << property.text
     end
-    developers[0]
+    developers[0].join(", ")
   end
 
   def publisher
@@ -52,7 +52,7 @@ class BestGames::Game
     @publisher.each do |property|
       publishers << property.text
     end
-    publishers[1]
+    publishers[1].join(", ")
   end
 
   def genre
@@ -61,7 +61,7 @@ class BestGames::Game
     @genre.each do |property|
       genres << property.text
     end
-    genres[2]
+    genres[2].join(", ")
   end
 
   def doc

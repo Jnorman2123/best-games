@@ -25,6 +25,14 @@ class BestGames::CLI
   end
 
   def game_details(game)
+    puts "Here are more details about the game you selected."
+    puts "--------------------------------------------------"
+    puts "#{game.title}"
+    puts "It is the number #{game.rank} most anticipated game."
+    puts "#{game.url}"
+    puts "It is set to be released #{game.release_date}."
     puts "#{game.summary}"
+    puts "Available on #{game.platform}."
+    puts "Developed by #{game.developer}."
   end
 end
