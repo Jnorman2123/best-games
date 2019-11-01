@@ -21,6 +21,7 @@ class BestGames::CLI
       input = gets.strip.downcase
       if input.to_i > 0 && input.to_i <= 50
         game = BestGames::Game.find_by_rank(input)
+        BestGames::Scraper.scrape_game_details(game) if !game.summary
         game_details(game)
       elsif input == "list"
         list_games
@@ -44,6 +45,6 @@ class BestGames::CLI
     puts "Available on #{game.platform}."
     puts "Developed by #{game.developer}."
     puts "Published by #{game.publisher}."
-    puts "Genres #{game.genre}"
+    puts "Genre(s) #{game.genre}"
   end
 end
