@@ -20,13 +20,12 @@ class BestGames::Scraper
     game.release_date = doc.search("dd li span").text.gsub(/unreleased|released|\D \d more/, "")
     game.summary = doc.search("dd.pod-objectStats-info__deck").text
     platforms = []
-    game.platform = doc.search("dd ul li")[0].text
-    # game.platform.each do |console|
-    #   console
-    #   .gsub(/\D \d more/, "")
-    #   platforms << text
-    # end
-    platforms.join(", ")
+    doc.search("dd ul li").each do |console|
+      platforms << console.text
+    end
+    platforms.delete("+ 2 more")
+    platforms.delete("+ 3 more")
+    game.platform = platforms.join(", ")
     properties = []
     doc.search("dl.pod-objectStats-additional dd").each do |property|
       properties << property.text
@@ -84,4 +83,5 @@ class BestGames::Scraper
 #   def doc
 #     @doc = Nokogiri::HTML(open(@url))
 #   end
+
 end
