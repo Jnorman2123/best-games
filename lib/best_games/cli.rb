@@ -13,9 +13,10 @@ class BestGames::CLI
 
   def list_games
     BestGames::Scraper.scrape_url
-    BestGames::Game.create
-    BestGames::Game.games
+    # BestGames::Game.create
+
     # BestGames::Scraper.scrape_title
+    BestGames::Game.games
     # BestGames::Scraper.scrape_release_date
     # BestGames::Scraper.scrape_summary
     # BestGames::Scraper.scrape_platform

@@ -2,7 +2,7 @@ class BestGames::Game
   attr_accessor :title, :release_date, :summary, :platform, :url, :developer, :publisher, :genre, :rank
   @@all = []
 
-  def initialize(title, rank, url)
+  def initialize(rank, title, url)
     @title = title
     @rank = rank
     @url = url
@@ -15,7 +15,7 @@ class BestGames::Game
   end
 
   def self.create
-    self.new(BestGames::Scraper.scrape_title, BestGames::Scraper.scrape_rank, BestGames::Scraper.scrape_url)
+    self.new(BestGames::Scraper.scrape_title)
   end
 
 end
