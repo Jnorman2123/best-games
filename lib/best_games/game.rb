@@ -13,6 +13,12 @@ class BestGames::Game
     @@all
   end
 
+  def self.find_by_rank(num)
+    self.games.find do |game|
+      game.rank == num
+    end
+  end
+
   def release_date
     @release_date = doc.search("dd li span").text.gsub(/unreleased|released|\D \d more/, "")
   end
