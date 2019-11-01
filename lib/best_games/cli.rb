@@ -12,7 +12,7 @@ class BestGames::CLI
   end
 
   def list_games
-    BestGames::Scraper.scrape_url
+    BestGames::Scraper.create_game
     # BestGames::Game.create
 
     # BestGames::Scraper.scrape_title

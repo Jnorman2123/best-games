@@ -4,7 +4,7 @@ class BestGames::Scraper
     doc = Nokogiri::HTML(open("https://www.gamespot.com/gamespot-50/"))
   end
 
-  def self.scrape_url
+  def self.create_game
     self.doc.search("li.media").each.with_index(1) do |game, index|
       next if index == 2
       url_suffix = game.search("figure a").attribute("href")

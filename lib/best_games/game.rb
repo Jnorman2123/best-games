@@ -15,10 +15,10 @@ class BestGames::Game
   end
 
   def release_date
-
+    release_date = doc.search("dd li span").text.gsub(/unreleased|released|\D \d more/, "")
   end
 
   def doc
-    @doc =
+    @doc = Nokogiri::HTML(open(@url))
   end
 end
