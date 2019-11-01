@@ -14,8 +14,11 @@ class BestGames::Game
     binding.pry
   end
 
-  def self.create
-    self.new(BestGames::Scraper.scrape_title)
+  def release_date
+
   end
 
+  def doc
+    @doc =
+  end
 end

@@ -1,5 +1,4 @@
 class BestGames::Scraper
-  @@urls = []
 
   def self.doc
     doc = Nokogiri::HTML(open("https://www.gamespot.com/gamespot-50/"))
@@ -10,34 +9,9 @@ class BestGames::Scraper
       next if index == 2
       url_suffix = game.search("figure a").attribute("href")
       url = "https://www.gamespot.com#{url_suffix}"
-      @@urls << url
       rank = game.search("figure a span span.gs50-item__rank__value").text.strip
       title = game.search("div h3 a").text
       BestGames::Game.new(rank, title, url)
-    end
-  end
-
-  def self.scrape_rank
-    self.doc.search("li.media").each.with_index(1) do |game, index|
-      next if index == 2
-      # rank = game.search("figure a span span.gs50-item__rank__value").text.strip
-    end
-  end
-
-  def self.urls
-    @@urls
-  end
-
-  def self.scrape_title
-    # self.urls.each do |page|
-    #   doc = Nokogiri::HTML(open(page))
-    #   title = doc.search("div h1").text.strip
-    #   BestGames::Game.new(title)
-    # end
-    self.doc.search("li.media").each.with_index(1) do |game, index|
-      next if index == 2
-
-      BestGames::Game.new(title)
     end
   end
 
