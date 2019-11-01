@@ -19,11 +19,16 @@ class BestGames::Game
   end
 
   def summary
-    @summary = doc.search("dd li span").text.gsub(/unreleased|released|\D \d more/, "")
+    @summary = doc.search("dd.pod-objectStats-info__deck").text
   end
 
   def platform
-    @platform  = doc.search("dd li span").text.gsub(/unreleased|released|\D \d more/, "")
+    platforms = []
+    @platform = doc.search("dd ul li")
+    @platform.each do |console|
+      text = console.text.gsub(/\D \d more/, "")
+      platforms << text
+    end
   end
 
   def developer
