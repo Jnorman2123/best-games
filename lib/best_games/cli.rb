@@ -26,7 +26,7 @@ class BestGames::CLI
       elsif input == "list"
         list_games
       elsif input == "exit"
-        puts "Goodbye"
+        puts "Thank you for checking out these upcoming games!"
       else
         puts ""
         puts "I don't recognize that input."
