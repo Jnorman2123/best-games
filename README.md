@@ -1,8 +1,6 @@
 # BestGames
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/best_games`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome!  This Ruby Gem runs a CLI that will list the top 50 upcoming games according to gamespot.com.  You can then choose to read more details about each game.
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To run the CLI you need to run ./bin/best-games from the best-games directory.  Then follow the prompts and find more details by entering the number for the desired game.
 
 ## Development
 
